@@ -1,0 +1,11 @@
+		How to setup Subversion (SVN) in your Eclipse?
+
+--> You need an Eclipse plugin called Subclipse to get access to any Subversion repository.
+--> Go to your Eclipse
+	Click on Help button
+	Click on "Install New Software"
+	Click on "Add" button
+	"Add Repository" popup will be displayed
+	In the name field, enter "Subclipse"..You can enter any name here
+	In Location field, enter "http://subclipse.tigris.org/update_1.6.x"
+	 		
