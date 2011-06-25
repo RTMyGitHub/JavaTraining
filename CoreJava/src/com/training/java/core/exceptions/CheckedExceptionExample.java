@@ -13,8 +13,8 @@ public class CheckedExceptionExample {
 	 */
 	public static void main(String[] args) {
 		
-		new CheckedExceptionExample().printStatesToFile();
-		
+		CheckedExceptionExample ce = new CheckedExceptionExample();
+		ce.printStatesToFile();
 	}
 	
 	private List<String> getStates()
@@ -39,8 +39,8 @@ public class CheckedExceptionExample {
 		  	      out.println("State " + i + " = " + states.get(i));
 		  	    }
 		  	    out.close();
-		//You are forced to catch the Exception here, since it is a checked Exception.
 		} catch (IOException e) {
+			//You are forced to catch the Exception here, since it is a checked Exception.
 			e.printStackTrace();
 		}
 
