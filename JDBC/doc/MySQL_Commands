@@ -1,0 +1,108 @@
+--> How to login to MySQL in command prompt : 
+    	mysql -p -u root
+--> Create a database called "training"
+     	create database training;
+--> How to know what database you are in : 
+		select database();
+--> connect to a database : 
+		use training;
+--> create a basic table book
+		create table book(id int, title varchar(30), author varchar(30), isbn varchar(15), pages int);
+--> If I want to see all the tables in this database?
+		show tables;
+--> If I want to see all the columns and its lengths, constraints..etc in a particular table
+		describe book;
+--> How to add not null constraint or primary key constraint after table is created?
+		alter table <table_name> modify <column_name> <column definition>;
+		alter table book modify id int primary key;
+		alter table book modify isbn varchar(20) unique;
+--> How to delete table?
+		drop table book;
+--> How to add primary key and not null while creating table?
+		create table book(id int primary key, title varchar(30) not null, author varchar(30) not null, isbn varchar(15) not null, pages int not null default 100);
+--> You can use describe command to see if table definition got reflected
+		describe book;
+--> How to insert some data..
+		insert into book values(1, 'Head First Java', 'Cathy', '126657876', 345);		
+--> How to check whether it has been insered? How to retrieve the data from table?
+		select * from book;
+--> Lets insert more..one more way of inserting rows
+		insert into book(id, title, author, isbn, pages) values(2, 'Spring in Action', 'Craig Wall', '665789754', 446);				
+--> Now, lets update a row and add missing information or change some other data
+		update book set isbn='9999999' where id = 2;
+--> Delete a row from a table..
+		delete from book where id = 2;		
+--> Now, lets create another table called publisher
+		create table publisher(id int primary key, name varchar(30) not null);
+--> Now, lets add a new column to book table that joins book and publisher
+		alter table book add publisher_id int not null;	
+--> Now, lets add foreign key constraint to book table..
+		alter table <table_name> constraint <constraint_name> foreign key (<column_name>) references <foreign_table>(foreign_column);
+		alter table book add constraint fk_publisher foreign key (publisher_id) references publisher(id);
+--> Now, try to insert into book table, it does NOT allow, because the corresponding publisher id has to match.
+		-- The following statement will fail
+		insert into book(id,title,author,isbn,pages) values(2, 'Spring in Action', 'Venkat','1234',440);
+--> So, we need to insert into publisher table first
+		insert into publisher values(1, 'Orielly');
+		insert into publisher values(2, 'Manning');
+--> Now, try to insert a book with appropriate publisher..It will work, no surprise :)
+		insert into book(id,title,author,isbn,pages,publisher_id) values(2, 'Spring in Action', 'Venkat','1234',440,2);
+--> Now, using join (inner join), get all the book and publisher details in one shot..Lets try..
+		select 	b.title, b.author, b.isbn, p.name publisher
+		from 	book b, publisher p
+		where	b.id = p.id;
+--> We didn't get all publishers, only matching ones..How to get all the publishers, even if they don't have any books published?
+    Lets use left outer join to achieve this
+    
+    	select  b.title, b.author, b.isbn, p.name publisher
+    	from	publisher p left join book b
+    	on 		p.id = b.id;
+
+--> We can achieve the same results using right outer join also, just switch the order of tables in the from or where clause..
+    There are two basic forms of outer joins. The left outer join and the right outer join. 
+    The only difference between them is the order of the tables they are relating. 
+    In other words, a left outer join can be turned into a right outer join simply by reversing the order of the tables in the FROM or WHERE clause. 
+    As such, the two types of outer join can be used interchangeably, and the decision about which one is used is based purely on convenience.
+
+    	select  b.title, b.author, b.isbn, p.name publisher
+    	from	book b right join publisher p 
+    	on 		p.id = b.id;
+    	
+--> Lets insert more books..
+	I would like to retrieve all the books from the publisher who published "Java Message Service" book..We use self joins to achieve this..
+	
+	select 	b2.title, b2.author, b2.publisher_id
+	from	book b1, book b2
+	where	b1.title = 'Java Message Service'
+	and		b2.publisher_id = b1.publisher_id;
+	
+	--If you need publisher name
+	select 	b2.title, b2.author, b2.publisher_id, p.name publisher
+	from	book b1, book b2, publisher p
+	where	b1.title = 'Java Message Service'
+	and		b2.publisher_id = b1.publisher_id
+	and		b1.publisher_id = p.publisher_id
+	and		b2.publisher_id = p.publisher_id;
+	
+--> The same result could be achieved withsub queries..
+	
+	select	*
+	from 	book b
+	where	b.publisher_id = (select	publisher_id
+								from	book
+								where	title = 'Java Message Service'
+								);
+	--Its equivalent to the following query..Subquery gets executed first and inserts there..						
+	select	*
+	from 	book b
+	where	b.publisher_id = 1;
+	
+	    	
+
+REFERENCES:
+--> http://www.brainbell.com/tutorials/MySQL/Using_Different_Join_Types.htm
+
+		
+					
+				
+												
