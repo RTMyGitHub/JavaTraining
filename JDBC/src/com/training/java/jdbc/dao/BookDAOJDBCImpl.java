@@ -1,6 +1,7 @@
 package com.training.java.jdbc.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,28 +9,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
-{
+public class BookDAOJDBCImpl implements BookDAO {
 	String dburl;
 	String dbusername;
 	String dbpassword;
-	
+
 	public BookDAOJDBCImpl(String dburl, String dbusername, String dbpassword) {
 		this.dburl = dburl;
 		this.dbusername = dbusername;
 		this.dbpassword = dbpassword;
 	}
-	
-	public void create(Book bookToAdd) throws DAOException
-	{
+
+	public void create(Book bookToAdd) throws DAOException {
 		Connection con = null;
 		PreparedStatement stmt = null;
-		try
-		{
+		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-//			Class.forName("com.mysql.jdbc.Driver");
-//			con = DriverManager.getConnection("jdbc:mysql://localhost/training", "root", "");
-			
+			// Class.forName("com.mysql.jdbc.Driver");
+			// con =
+			// DriverManager.getConnection("jdbc:mysql://localhost/training",
+			// "root", "");
+
 			stmt = con
 					.prepareStatement("insert into book(id,title,author,isbn,pages,publisher_id) values(?, ?, ?,?,?, ?);");
 
@@ -42,63 +42,52 @@ public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
 
 			int numberOfRowsAffected = stmt.executeUpdate();
 
-			if (numberOfRowsAffected != 1)
-			{
+			if (numberOfRowsAffected != 1) {
 				throw new DAOException(
 						"Error occured while creating new book..");
 			}
-		} catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} finally
-		{
-			if (stmt != null)
-			{
-				try
-				{
+		} finally {
+			if (stmt != null) {
+				try {
 					stmt.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (con != null)
-			{
-				try
-				{
+			if (con != null) {
+				try {
 					con.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 	}
 
-	public List<Book> getAllBooks() throws DAOException
-	{
+	public List<Book> getAllBooks() throws DAOException {
 		List<Book> books = new ArrayList<Book>();
 
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		try
-		{
+		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-//			Class.forName("com.mysql.jdbc.Driver");
-//			con = DriverManager.getConnection("jdbc:mysql://localhost/training", "root", "");
+			// Class.forName("com.mysql.jdbc.Driver");
+			// con =
+			// DriverManager.getConnection("jdbc:mysql://localhost/training",
+			// "root", "");
 			stmt = con.createStatement();
 			rs = stmt.executeQuery("select * from book");
 
 			Book aBook = null;
-			while (rs.next())
-			{
+			while (rs.next()) {
 				// Create a Book object
 				aBook = new Book();
 
@@ -121,45 +110,33 @@ public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
 				// Now, add each book to books List
 				books.add(aBook);
 			}
-		} catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} finally
-		{
-			if (rs != null)
-			{
-				try
-				{
+		} finally {
+			if (rs != null) {
+				try {
 					rs.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (stmt != null)
-			{
-				try
-				{
+			if (stmt != null) {
+				try {
 					stmt.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (con != null)
-			{
-				try
-				{
+			if (con != null) {
+				try {
 					con.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
@@ -168,15 +145,15 @@ public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
 		return books;
 	}
 
-	public void update(Book bookToUpdate) throws DAOException
-	{
+	public void update(Book bookToUpdate) throws DAOException {
 		Connection con = null;
 		PreparedStatement stmt = null;
-		try
-		{
+		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-//			Class.forName("com.mysql.jdbc.Driver");
-//			con = DriverManager.getConnection("jdbc:mysql://localhost/training", "root", "");
+			// Class.forName("com.mysql.jdbc.Driver");
+			// con =
+			// DriverManager.getConnection("jdbc:mysql://localhost/training",
+			// "root", "");
 			stmt = con.prepareStatement("update book set title = ?,"
 					+ "author = ?," + "isbn = ?," + "pages = ?,"
 					+ "publisher_id = ? where id = ?");
@@ -190,54 +167,44 @@ public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
 
 			int numberOfRowsAffected = stmt.executeUpdate();
 
-			if (numberOfRowsAffected != 1)
-			{
+			if (numberOfRowsAffected != 1) {
 				throw new DAOException("Error occured while updating book..");
 			}
-		} catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} finally
-		{
-			if (stmt != null)
-			{
-				try
-				{
+		} finally {
+			if (stmt != null) {
+				try {
 					stmt.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (con != null)
-			{
-				try
-				{
+			if (con != null) {
+				try {
 					con.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 	}
 
-	public Book findByPrimaryKey(int id) throws DAOException
-	{
+	public Book findByPrimaryKey(int id) throws DAOException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		try
-		{
+		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-//			Class.forName("com.mysql.jdbc.Driver");
-//			con = DriverManager.getConnection("jdbc:mysql://localhost/training", "root", "");
+			// Class.forName("com.mysql.jdbc.Driver");
+			// con =
+			// DriverManager.getConnection("jdbc:mysql://localhost/training",
+			// "root", "");
 			stmt = con.prepareStatement("select * from book where id = ?");
 
 			stmt.setInt(1, id);
@@ -246,8 +213,7 @@ public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
 			// Create a Book object
 			Book aBook = null;
 
-			while (rs.next())
-			{
+			while (rs.next()) {
 				aBook = new Book();
 				// Retrieve all the book details from database for each record
 				String title = rs.getString("title");
@@ -266,100 +232,86 @@ public class BookDAOJDBCImpl extends AbstractDAO implements BookDAO
 			}
 
 			return aBook;
-		} catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} finally
-		{
-			if (rs != null)
-			{
-				try
-				{
+		} finally {
+			if (rs != null) {
+				try {
 					rs.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (stmt != null)
-			{
-				try
-				{
+			if (stmt != null) {
+				try {
 					stmt.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (con != null)
-			{
-				try
-				{
+			if (con != null) {
+				try {
 					con.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 	}
 
-	public void delete(int id) throws DAOException
-	{
+	public void delete(int id) throws DAOException {
 		Connection con = null;
 		PreparedStatement stmt = null;
-		try
-		{
+		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-//			Class.forName("com.mysql.jdbc.Driver");
-//			con = DriverManager.getConnection("jdbc:mysql://localhost/training", "root", "");
+			// Class.forName("com.mysql.jdbc.Driver");
+			// con =
+			// DriverManager.getConnection("jdbc:mysql://localhost/training",
+			// "root", "");
 			stmt = con.prepareStatement("delete from book where id = ?");
 
 			stmt.setInt(1, id);
 			int numberOfRowsAffected = stmt.executeUpdate();
 
-			if (numberOfRowsAffected != 1)
-			{
+			if (numberOfRowsAffected != 1) {
 				throw new DAOException("Error occured while updating book..");
 			}
-		} catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
-		} finally
-		{
-			if (stmt != null)
-			{
-				try
-				{
+		} finally {
+			if (stmt != null) {
+				try {
 					stmt.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 
-			if (con != null)
-			{
-				try
-				{
+			if (con != null) {
+				try {
 					con.close();
-				} catch (SQLException e)
-				{
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+	}
+	
+	private Connection getConnection(String dburl, String dbusername,
+			String password) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(dburl, dbusername,
+				password);
+		return con;
 	}
 }

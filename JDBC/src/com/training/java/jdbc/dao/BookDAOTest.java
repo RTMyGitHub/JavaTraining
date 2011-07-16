@@ -12,7 +12,7 @@ public class BookDAOTest {
 	@Test
 	public void createShouldInsertABookInDB()
 	{
-		BookDAO dao = new BookDAOJDBCImpl();
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:mysql://localhost/training", "root", "password");
 
 		//Create a book
 		Book newBook = new Book();
@@ -35,7 +35,7 @@ public class BookDAOTest {
 	@Test
 	public void getAllBooksMethodsMustReturnAtLeastOneBook()
 	{
-		BookDAO dao = new BookDAOJDBCImpl();
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:mysql://localhost/training", "root", "password");
 		
 		try
 		{
@@ -65,7 +65,7 @@ public class BookDAOTest {
 	@Test
 	public void updateMethodShouldUpdateBookInDB()
 	{
-		BookDAO dao = new BookDAOJDBCImpl();
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:mysql://localhost/training", "root", "password");
 		
 		try
 		{
@@ -87,7 +87,7 @@ public class BookDAOTest {
 	@Test
 	public void deleteMethodShouldDeleteBookFromDB()
 	{
-		BookDAO dao = new BookDAOJDBCImpl();
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:mysql://localhost/training", "root", "password");
 		
 		try
 		{
