@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class BookDAOHibernateImpl implements BookDAO {
@@ -18,8 +19,14 @@ public class BookDAOHibernateImpl implements BookDAO {
 
 	@Override
 	public void create(Book aNewBook) throws DAOException {
-		// TODO Auto-generated method stub
-
+		Session session = sessionFactory.openSession();
+		
+		Transaction transaction = session.getTransaction();
+		transaction.begin();
+		
+		session.save(aNewBook);
+		
+		transaction.commit();
 	}
 
 	@Override
@@ -31,21 +38,33 @@ public class BookDAOHibernateImpl implements BookDAO {
 	}
 
 	@Override
-	public Book findByPrimaryKey(int id) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+	public Book findByPrimaryKey(Integer id) throws DAOException {
+
+		Session session = sessionFactory.openSession();
+		return (Book) session.get(Book.class, id);
 	}
 
 	@Override
 	public void update(Book bookToUpdate) throws DAOException {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.getTransaction();
 
+		transaction.begin();
+		session.update(bookToUpdate);
+		transaction.commit();
 	}
 
 	@Override
 	public void delete(int id) throws DAOException {
-		// TODO Auto-generated method stub
-
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.getTransaction();
+		
+		Book bookToDelete = new Book();
+		bookToDelete.setId(id);
+		
+		transaction.begin();
+		session.delete(bookToDelete);
+		transaction.commit();
 	}
 
 }
