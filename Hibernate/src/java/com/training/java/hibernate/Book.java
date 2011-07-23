@@ -3,18 +3,18 @@ package com.training.java.hibernate;
 import java.io.Serializable;
 
 public class Book implements Serializable {
-	private int id;
+	private Integer id;
 	private String title;
 	private String author;
 	private String isbn;
-	private int pages;
-	private int publisherId;
+	private Integer pages;
+	private Integer publisherId;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -42,19 +42,19 @@ public class Book implements Serializable {
 		this.isbn = isbn;
 	}
 
-	public int getPages() {
+	public Integer getPages() {
 		return pages;
 	}
 
-	public void setPages(int pages) {
+	public void setPages(Integer pages) {
 		this.pages = pages;
 	}
 
-	public int getPublisherId() {
+	public Integer getPublisherId() {
 		return publisherId;
 	}
 
-	public void setPublisherId(int publisherId) {
+	public void setPublisherId(Integer publisherId) {
 		this.publisherId = publisherId;
 	}
 }

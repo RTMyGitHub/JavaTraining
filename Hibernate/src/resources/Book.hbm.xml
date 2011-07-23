@@ -38,7 +38,7 @@
         <property name="author"/>
         <property name="isbn"/>
         <property name="pages"/>
-        <property name="publisherId"/>
+        <property name="publisherId" column="publisher_id"/>
     </class>
 
 </hibernate-mapping>
