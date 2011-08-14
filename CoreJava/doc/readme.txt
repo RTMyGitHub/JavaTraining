@@ -27,6 +27,15 @@ classes : 	ArithmeticDemo.java
 			ConditionalDemo.java
 			TernaryOperatorDemo.java
 						
+Topic	: 	Control flow statements
+package : 	com.training.java.core.controlflow
+classes : 	IfElseDemo.java
+			SwitchDemo.java
+			SwitchDemoFallThrough.java
+			WhileDemo.java
+			DoWhileDemo.java
+			ForDemo.java
+			
 			
 
     
