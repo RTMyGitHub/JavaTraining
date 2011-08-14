@@ -19,7 +19,7 @@ public class HelloWorldWithArguments {
 		String firstName = args[0];
 		String lastName = args[1];
 		
-		//Now, print a personalized Hello. Also realized how we use + operator to concatenate 2 Strings.
+		//Now, print a personalized Hello. Also realize how we use + operator to concatenate 2 Strings.
 		
 		System.out.println("Hello " + firstName + " " + lastName);
 	}
