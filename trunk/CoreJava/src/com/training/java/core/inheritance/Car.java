@@ -37,7 +37,7 @@ public class Car
 		currentSpeed -= decreaseMiles;
 	}
 	
-	public void getInfo()
+	public void printInformation()
 	{
 		System.out.println("The color is " + color);
 		System.out.println("The started flag is " + started);
