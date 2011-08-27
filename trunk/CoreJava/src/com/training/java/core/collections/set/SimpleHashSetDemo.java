@@ -15,13 +15,17 @@ public class SimpleHashSetDemo {
 		states.add("MI");
 		states.add("AB");
 		states.add("CO");
+		states.add(null);
 
 		// Observe the output carefully..The order is neither sorted not the
 		// order you added to the Set. It is completely random. Also, keep in
 		// mind that there is no guarantee that it gets printed in the same
 		// order you run every time. You cannot depend on the order at all. But,
 		// this is quicker than all other set types, so if you need a simple, no
-		// order Set with better performance, HashSet is your bet.
+		// order Set with better performance, HashSet is your bet. Also observe
+		// that the duplicated element MI is not being printed, because Sets
+		// don't support duplicate values. Also observe that HashSet accepts
+		// null values.
 
 		for (String aState : states) {
 			System.out.println("aState = " + aState);
