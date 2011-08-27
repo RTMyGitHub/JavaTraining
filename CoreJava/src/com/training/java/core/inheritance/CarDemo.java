@@ -13,10 +13,10 @@ public class CarDemo
 		car.start();
 		car.accelerate(20);
 		car.applyBrakes(10);
-		car.getInfo();
+		car.printInformation();
 		
 		car.nitro();
-		car.getInfo();
+		car.printInformation();
 	}
 
 }
