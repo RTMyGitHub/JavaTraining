@@ -25,11 +25,6 @@ public class BookDAOJDBCImpl implements BookDAO {
 		PreparedStatement stmt = null;
 		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-			// Class.forName("com.mysql.jdbc.Driver");
-			// con =
-			// DriverManager.getConnection("jdbc:mysql://localhost/training",
-			// "root", "");
-
 			stmt = con
 					.prepareStatement("insert into book(id,title,author,isbn,pages,publisher_id) values(?, ?, ?,?,?, ?);");
 
@@ -79,10 +74,6 @@ public class BookDAOJDBCImpl implements BookDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-			// Class.forName("com.mysql.jdbc.Driver");
-			// con =
-			// DriverManager.getConnection("jdbc:mysql://localhost/training",
-			// "root", "");
 			stmt = con.createStatement();
 			rs = stmt.executeQuery("select * from book");
 
@@ -150,10 +141,6 @@ public class BookDAOJDBCImpl implements BookDAO {
 		PreparedStatement stmt = null;
 		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-			// Class.forName("com.mysql.jdbc.Driver");
-			// con =
-			// DriverManager.getConnection("jdbc:mysql://localhost/training",
-			// "root", "");
 			stmt = con.prepareStatement("update book set title = ?,"
 					+ "author = ?," + "isbn = ?," + "pages = ?,"
 					+ "publisher_id = ? where id = ?");
@@ -201,10 +188,6 @@ public class BookDAOJDBCImpl implements BookDAO {
 		ResultSet rs = null;
 		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-			// Class.forName("com.mysql.jdbc.Driver");
-			// con =
-			// DriverManager.getConnection("jdbc:mysql://localhost/training",
-			// "root", "");
 			stmt = con.prepareStatement("select * from book where id = ?");
 
 			stmt.setInt(1, id);
@@ -270,10 +253,6 @@ public class BookDAOJDBCImpl implements BookDAO {
 		PreparedStatement stmt = null;
 		try {
 			con = getConnection(dburl, dbusername, dbpassword);
-			// Class.forName("com.mysql.jdbc.Driver");
-			// con =
-			// DriverManager.getConnection("jdbc:mysql://localhost/training",
-			// "root", "");
 			stmt = con.prepareStatement("delete from book where id = ?");
 
 			stmt.setInt(1, id);
