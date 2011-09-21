@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<action-mappings>
+		<action path="/list"
+			type="com.training.java.servlet.moviestore.web.ListMoviesAction">
+			<forward name="listMovies" path="/WEB-INF/jsp/ListMovies.jsp"></forward>
+		</action>
+	</action-mappings>
+	<message-resources
+		parameter="com.training.java.servlet.moviestore.web.MovieStore"></message-resources>
+
+</struts-config>
+
