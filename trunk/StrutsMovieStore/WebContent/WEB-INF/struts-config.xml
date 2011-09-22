@@ -5,12 +5,29 @@
 
 <struts-config>
 
+	<form-beans>
+		<form-bean name="movieForm"
+			type="com.training.java.servlet.moviestore.web.MovieForm"></form-bean>
+	</form-beans>
+
 	<action-mappings>
 		<action path="/list"
 			type="com.training.java.servlet.moviestore.web.ListMoviesAction">
 			<forward name="listMovies" path="/WEB-INF/jsp/ListMovies.jsp"></forward>
 		</action>
+
+		<action path="/add"
+			type="com.training.java.servlet.moviestore.web.AddMovieAction">
+			<forward name="addMovie" path="/WEB-INF/jsp/AddMovie.jsp"></forward>
+		</action>
+
+		<action path="/save" name="movieForm"
+			type="com.training.java.servlet.moviestore.web.SaveMovieAction"
+			input="/WEB-INF/jsp/AddMovie.jsp" validate="true">
+			<forward name="acknowledgement" path="/WEB-INF/jsp/Acknowledgement.jsp"></forward>
+		</action>
 	</action-mappings>
+
 	<message-resources
 		parameter="com.training.java.servlet.moviestore.web.MovieStore"></message-resources>
 
