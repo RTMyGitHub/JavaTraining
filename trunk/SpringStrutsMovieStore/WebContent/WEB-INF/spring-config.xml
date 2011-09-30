@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="movieDAO" class="com.training.java.moviestore.domain.MovieDAOJDBCImpl">
+		<constructor-arg index="2" value="password" />
+		<constructor-arg index="0"
+			value="jdbc:mysql://localhost/training" />
+		<constructor-arg index="1" value="root" />
+	</bean>
+	
+	<bean id="movieService" class="com.training.java.moviestore.service.MovieServiceImpl">
+		<constructor-arg index="0" ref="movieDAO"/>
+	</bean>
+
+</beans>
