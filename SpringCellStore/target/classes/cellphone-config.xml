@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="cellPhoneDAO" class="com.training.cellstore.domain.CellphoneDAOJDBCImpl">
+		<constructor-arg value="jdbc:mysql://localhost/training"></constructor-arg>
+		<constructor-arg value="root"></constructor-arg>
+		<constructor-arg value="rajashri"></constructor-arg>
+	</bean>
+	
+	<bean id="cellPhoneService" class="com.training.cellstore.service.CellPhoneServiceImpl">
+		<property name="dao" ref="cellPhoneDAO"></property>
+	</bean>
+
+</beans>
