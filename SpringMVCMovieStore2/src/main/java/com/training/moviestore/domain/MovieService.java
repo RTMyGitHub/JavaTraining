@@ -7,4 +7,5 @@ public interface MovieService
 {
 	void create(Movie movie);
 	List<Movie> getMovies();
+	Movie getById(int id);
 }

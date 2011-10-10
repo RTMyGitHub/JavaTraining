@@ -90,4 +90,42 @@ public class MovieDAOJDBCImpl implements MovieDAO
 
 		return movies;
 	}
+
+	@Override
+	public Movie findByPrimaryKey(int id) {
+		Movie movie = null;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(dburl, dbuser,
+					dbPassword);
+			PreparedStatement stmt = con
+					.prepareStatement("select * from movie where id =  ?");
+			
+			stmt.setInt(1, id);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next())
+			{
+				movie = new Movie();
+				
+				movie.setId(rs.getInt("id"));
+				movie.setName(rs.getString("name"));
+				movie.setRating(rs.getString("rating"));
+				movie.setReleaseDate(rs.getDate("release_date"));
+				movie.setGenre(rs.getString("genre"));
+			}
+		} 
+		catch(ClassNotFoundException ex)
+		{
+			ex.printStackTrace();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return movie;
+	}
 }
