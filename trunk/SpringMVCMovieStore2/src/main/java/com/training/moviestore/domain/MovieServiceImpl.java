@@ -23,4 +23,9 @@ public class MovieServiceImpl implements MovieService
 	{
 		return dao.getMovies();	
 	}
+
+	@Override
+	public Movie getById(int id) {
+		return dao.findByPrimaryKey(id);
+	}
 }

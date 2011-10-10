@@ -2,9 +2,7 @@
 
 <sf:form method="POST" modelAttribute="movie">
 
-	id : <sf:input path="id" />
-	<br />
-		name : <sf:input path="name" />
+	name : <sf:input path="name" />
 	<br />
 	rating : <sf:input path="rating" />
 	<br />
