@@ -3,7 +3,9 @@ package com.training.java.core.controlflow;
 public class SwitchDemo {
 	public static void main(String[] args) {
 
-		int month = 8;
+		//Get month number from user
+		int month = Integer.parseInt(args[0]);
+		
 		String monthString;
 		switch (month) {
 		case 1:
