@@ -1,5 +1,10 @@
 The following assignments must be done for Collections..
 
+Please create separate packages for each object..For example, Car object gets
+
+com.training.java.core.collections.car.pre15
+com.training.java.core.collections.car.post15
+
 --> Create a class called Laptop.java and add the appropriate attributes. Create three different Laptop instances and add them to a Collection. 
     Now, read from that Collection and print each attribute in console (both 1.4 and 1.5 style and mutable and immutable way)
     
