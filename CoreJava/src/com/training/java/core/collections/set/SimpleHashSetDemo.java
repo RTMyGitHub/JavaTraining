@@ -23,7 +23,7 @@ public class SimpleHashSetDemo {
 		// order you run every time. You cannot depend on the order at all. But,
 		// this is quicker than all other set types, so if you need a simple, no
 		// order Set with better performance, HashSet is your bet. Also observe
-		// that the duplicated element MI is not being printed, because Sets
+		// that the duplicated element MI is not being printed twice, because Sets
 		// don't support duplicate values. Also observe that HashSet accepts
 		// null values.
 
