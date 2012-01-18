@@ -17,7 +17,7 @@ public class SimpleHashSetDemo {
 		states.add("CO");
 		states.add(null);
 
-		// Observe the output carefully..The order is neither sorted not the
+		// Observe the output carefully..The order is neither sorted nor the
 		// order you added to the Set. It is completely random. Also, keep in
 		// mind that there is no guarantee that it gets printed in the same
 		// order you run every time. You cannot depend on the order at all. But,
