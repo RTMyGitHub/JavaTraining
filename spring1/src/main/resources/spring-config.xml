@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean class="com.training.java.spring.Piano" id="piano"></bean>
+	<bean class="com.training.java.spring.Saxaphone" id="saxaphone"></bean>
+	
+	<bean class="com.training.java.spring.Instrumentalist" id="jiten">
+		<constructor-arg ref="piano"></constructor-arg>
+	</bean>
+	
+	<bean class="com.training.java.spring.two.StudentDAOJDBCImpl" id="studentDAO">
+		<constructor-arg name="driverClassName" value="com.mysql.jdbc.Driver"></constructor-arg>
+		<constructor-arg name="jdbcURL" value="jdbc:mysql://localhost/training"></constructor-arg>
+		<constructor-arg name="username" value="root"></constructor-arg>
+		<constructor-arg name="password" value="password"></constructor-arg>
+	</bean>
+	
+	<bean class="com.training.java.spring.two.StudentServiceImpl" id="studentService">
+		<constructor-arg ref="studentDAO"></constructor-arg>
+	</bean>
+
+</beans>
