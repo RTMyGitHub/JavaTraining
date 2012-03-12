@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.training.java.spring.Piano" id="piano" scope="prototype"></bean>
+	<bean class="com.training.java.spring.Saxaphone" id="saxaphone" scope="prototype"></bean>
+
+	<bean class="com.training.java.spring.Instrumentalist" id="jiten">
+		<!-- Setter injection -->
+		<property name="instrument" ref="piano"></property>
+	</bean>
+
+	<bean class="com.training.java.spring.Instrumentalist" id="jiten2">
+		<!-- Setter injection -->
+		<property name="instrument" ref="piano"></property>
+	</bean>
+	
+</beans>
