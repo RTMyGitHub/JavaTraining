@@ -40,7 +40,7 @@ public class BookDAOHibernateImplTest {
 		BookDAO dao = new BookDAOHibernateImpl();
 		
 		Book newBook = new Book();
-		newBook.setId(5);
+		newBook.setId(6);
 		newBook.setAuthor("Gavin King");
 		newBook.setIsbn("1234");
 		newBook.setTitle("Hibernate ");
