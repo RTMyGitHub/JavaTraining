@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>bookstore</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingCart</display-name>
+    <servlet-name>ShoppingCart</servlet-name>
+    <servlet-class>com.training.java.servlet.ShoppingCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCart</servlet-name>
+    <url-pattern>/shoppingcart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignoutServlet</display-name>
+    <servlet-name>SignoutServlet</servlet-name>
+    <servlet-class>com.training.java.servlet.SignoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignoutServlet</servlet-name>
+    <url-pattern>/signout</url-pattern>
+  </servlet-mapping>
+  
+  <session-config>
+  	<session-timeout>5</session-timeout>
+  </session-config>
+  
+</web-app>
