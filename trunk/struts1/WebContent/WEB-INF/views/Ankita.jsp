@@ -1,0 +1,1 @@
+<h1>Hi, I am Ankita, and welcome to my Struts Application!!</h1>
