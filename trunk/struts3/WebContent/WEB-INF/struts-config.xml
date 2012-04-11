@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="carForm" type="com.training.struts.car.web.CarForm"></form-bean>
+	</form-beans>
+
+	<action-mappings>
+		<action path="/car" name="carForm" type="com.training.struts.car.web.CarAction" parameter="action" input="/WEB-INF/views/AddCar.jsp">
+			<forward name="list" path="/WEB-INF/views/ListCars.jsp"></forward>
+			<forward name="add" path="/WEB-INF/views/AddCar.jsp"></forward>
+			<forward name="acknowledgement" path="/WEB-INF/views/Acknowledgement.jsp"></forward>
+		</action>
+	</action-mappings>
+	
+<message-resources parameter="CarDealership"></message-resources>	
+</struts-config>         
