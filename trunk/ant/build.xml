@@ -1,0 +1,68 @@
+<project basedir="." name="unclebob">
+	
+	<property name="distDir" value="dist"/>
+	<property name="warDir" value="${distDir}/unclebob"/>
+	<property name="warFile" value="unclebob.war"/>
+	
+	<property name="tomcat.home" value="C:/javatraining/env/apache-tomcat-7.0.26"/>
+	
+	<target name="clean">
+		<delete dir="dist"></delete>
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${warDir}"/>
+		<mkdir dir="${warDir}/WEB-INF"/>
+		<mkdir dir="${warDir}/WEB-INF/classes"/>
+	</target>
+	
+	<path id="master-classpath">
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="struts-core-1.3.10.jar" />
+		</fileset>
+		<fileset dir="${tomcat.home}/lib">
+			<include name="servlet-api.jar" />
+		</fileset>
+	</path>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="src" includes="**/*.java" destdir="${warDir}/WEB-INF/classes">
+			<classpath refid="master-classpath"></classpath>
+		</javac>
+	</target>
+	
+	<target name="build" depends="compile">
+
+		<!-- Copy web.xml and struts-config.xml to WEB-INF folder -->
+		<copy todir="${warDir}/WEB-INF">
+			<fileset dir="WebContent/WEB-INF" includes="*.xml" />
+		</copy>
+		
+		<!--Copy all jars to WEB-INF/lib -->
+		<copy todir="${warDir}/WEB-INF/lib">
+			<fileset dir="WebContent/WEB-INF/lib" includes="*.jar" />
+		</copy>
+		
+		<!-- Copy JSP files -->
+		<copy todir="${warDir}/WEB-INF/">
+			<fileset dir="WebContent/WEB-INF" includes="views/**" />
+		</copy>
+		
+		<!-- Copy properties files to /WEB-INF/classes folder -->
+		<copy todir="${warDir}/WEB-INF/classes">
+			<fileset dir="properties" includes="*.properties" />
+		</copy>
+		
+		<!-- Create war file -->
+		<jar jarfile="${warDir}/${warFile}" basedir="${warDir}" />
+	</target>
+	
+	<target name="deploy" depends="build">
+		<!-- Copy war file to Tomcat -->
+		<copy todir="${tomcat.home}/webapps">
+			<fileset dir="${warDir}" includes="${warFile}"></fileset>
+		</copy>
+	</target>
+	
+</project>
+
