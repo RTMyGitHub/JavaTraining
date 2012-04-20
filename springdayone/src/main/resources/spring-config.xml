@@ -12,4 +12,11 @@
 	<constructor-arg ref="dummy"></constructor-arg>
 </bean>
 
+<bean class="com.training.spring.two.CarDAOJDBCImpl" id="carDAOJDBCImpl"></bean>
+<bean class="com.training.spring.two.CarDAODummyImpl" id="carDAODummyImpl"></bean>
+
+<bean class="com.training.spring.two.CarServiceImpl" id="carService">
+	<constructor-arg ref="carDAOJDBCImpl"></constructor-arg>
+</bean>
+
 </beans>
