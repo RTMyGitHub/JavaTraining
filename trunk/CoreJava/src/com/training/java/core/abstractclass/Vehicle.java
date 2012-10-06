@@ -1,5 +1,9 @@
 package com.training.java.core.abstractclass;
 
+/**
+ * @author Hari
+ *
+ */
 public abstract class Vehicle
 {
 	/**
