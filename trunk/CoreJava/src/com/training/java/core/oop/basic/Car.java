@@ -3,7 +3,7 @@ package com.training.java.core.oop.basic;
 /**
  * Every object has state and behavior. Object stores its state in fields
  * (variables). Remember, this is a class (blue print) not an actual instance
- * (object). So creating an actual instance of this class not this classes's
+ * (object). So creating an actual instance of this class is not this classes's
  * job. Also this class doesn't have main method, so you cannot run (execute)
  * this class.
  * 
