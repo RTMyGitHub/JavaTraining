@@ -9,6 +9,7 @@ public class AbstractDemo
 	public static void main(String[] args)
 	{
 		Vehicle car = new Car();
+		
 		car.start();
 		car.drive();
 		car.stop();
