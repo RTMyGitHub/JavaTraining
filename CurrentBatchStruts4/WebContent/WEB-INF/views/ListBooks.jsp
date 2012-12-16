@@ -19,12 +19,17 @@
 			<th>Title</th>
 			<th>Author</th>
 			<th>ISBN</th>
+			<th>Update/Delete Link</th>
 		</tr>
 		<logic:iterate id="aBook" name="venkat">
 			<tr>
 				<td>${aBook.title}</td>
 				<td>${aBook.author}</td>
 				<td>${aBook.isbn}</td>
+				<td>
+					<a href="/CurrentBatchStruts5/update?id=${aBook.id}">Update</a>
+					<a href="/CurrentBatchStruts5/delete?id=${aBook.id}">Delete</a>
+				</td>
 			</tr>
 		</logic:iterate>
 	</table>

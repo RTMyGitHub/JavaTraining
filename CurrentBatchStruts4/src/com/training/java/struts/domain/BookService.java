@@ -8,4 +8,10 @@ public interface BookService {
 
 	void addBook(Book book) throws ServiceException;
 
+	Book getById(int id) throws ServiceException;
+
+	void update(Book book) throws ServiceException;
+
+	void delete(int id) throws ServiceException;
+
 }
