@@ -18,13 +18,27 @@
 		<action path="/add" type="com.training.java.struts.web.AddBooksAction">
 			<forward name="AddBook" path="/WEB-INF/views/AddBook.jsp"></forward>
 		</action>
-
-		<action path="/save" name="bookForm" type="com.training.java.struts.web.SaveBooksAction">
-			<forward name="Acknowledgement" path="/WEB-INF/views/Acknowledgement.jsp"></forward>
+		
+		<action path="/update" type="com.training.java.struts.web.UpdateBookAction" name="bookForm" validate="false">
+			<forward name="UpdateBook" path="/WEB-INF/views/AddBook.jsp"></forward>
+		</action>
+		
+		<action path="/delete" type="com.training.java.struts.web.DeleteBookAction">
+			<forward name="List" path="/list" redirect="true"></forward>
 		</action>
 
-
+		<action path="/save" name="bookForm" type="com.training.java.struts.web.SaveBooksAction" validate="true" input="/WEB-INF/views/AddBook.jsp">
+			<forward name="Acknowledgement" path="/WEB-INF/views/Acknowledgement.jsp"></forward>
+		</action>
+		
+		<action path="/" type="com.training.java.struts.web.HomeAction">
+			<forward name="Home" path="/WEB-INF/views/Index.jsp"></forward>
+		</action>
+		
+		
 	</action-mappings>
+	
+	<message-resources parameter="BookStore"></message-resources>
 
 </struts-config>
           

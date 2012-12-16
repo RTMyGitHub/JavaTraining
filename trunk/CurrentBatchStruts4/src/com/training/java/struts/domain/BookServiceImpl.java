@@ -28,4 +28,43 @@ public class BookServiceImpl implements BookService {
 			throw new ServiceException(ex);
 		}
 	}
+
+	@Override
+	public Book getById(int id) throws ServiceException {
+		
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:oracle:thin:@localhost:1521:XE", "bookstore", "password");
+		
+		try {
+			return dao.findByPrimaryKey(id);
+		} catch (DAOException ex) {
+			ex.printStackTrace();
+			throw new ServiceException(ex);
+		}
+		
+	}
+
+	@Override
+	public void update(Book book) throws ServiceException {
+		
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:oracle:thin:@localhost:1521:XE", "bookstore", "password");
+		
+		try {
+			dao.updateBook(book);
+		} catch (DAOException ex) {
+			ex.printStackTrace();
+			throw new ServiceException(ex);
+		}
+	}
+
+	@Override
+	public void delete(int id) throws ServiceException {
+		BookDAO dao = new BookDAOJDBCImpl("jdbc:oracle:thin:@localhost:1521:XE", "bookstore", "password");
+		
+		try {
+			dao.deleteBook(id);
+		} catch (DAOException ex) {
+			ex.printStackTrace();
+			throw new ServiceException(ex);
+		}
+	}
 }

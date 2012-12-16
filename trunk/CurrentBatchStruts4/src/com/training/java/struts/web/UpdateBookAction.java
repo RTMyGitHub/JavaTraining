@@ -1,7 +1,5 @@
 package com.training.java.struts.web;
 
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +12,7 @@ import com.training.java.struts.domain.Book;
 import com.training.java.struts.domain.BookService;
 import com.training.java.struts.domain.BookServiceImpl;
 
-public class SaveBooksAction extends Action {
-	
+public class UpdateBookAction extends Action {
 	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -24,23 +21,16 @@ public class SaveBooksAction extends Action {
 		
 		BookForm bookForm = (BookForm) form;
 		
-		//Convert BookForm into Book object		
-		Book book = new Book(bookForm.getId(), bookForm.getTitle(), bookForm.getAuthor(), bookForm.getIsbn(), bookForm.getPages(), new Date());
-
-		//Call BookService and save the details
 		BookService service = new BookServiceImpl();
-
-		if(bookForm.isUpdateFlag())
-		{
-			service.update(book);
-		}
-		else
-		{
-			service.addBook(book);
-		}
+		Book book = service.getById(bookForm.getId());
 		
-		//Send acknowledgement
-		return mapping.findForward("Acknowledgement");
+		bookForm.setAuthor(book.getAuthor());
+		bookForm.setIsbn(book.getIsbn());
+		bookForm.setPages(book.getPages());
+		bookForm.setTitle(book.getTitle());
+		bookForm.setUpdateFlag(true);
+		
+		return mapping.findForward("UpdateBook");
 		
 	}
 
