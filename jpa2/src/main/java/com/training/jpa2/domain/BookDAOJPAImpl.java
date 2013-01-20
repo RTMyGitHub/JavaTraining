@@ -1,40 +1,30 @@
 package com.training.jpa2.domain;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import com.training.jpa2.util.EntityManagerUtil;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class BookDAOJPAImpl implements BookDAO {
+	
+	@PersistenceContext
+    private EntityManager em;	
 
 	public void create(Book book) {
-		
-		EntityManager em = EntityManagerUtil.getEMF().createEntityManager();
-		em.getTransaction().begin();
 		em.persist(book);
-		em.getTransaction().commit();
 	}
 
 	public Book findByPrimaryKey(int id) {
-		EntityManager em = EntityManagerUtil.getEMF().createEntityManager();
 		return em.find(Book.class, id);
 	}
 
 	public void update(Book book) {
-		EntityManager em = EntityManagerUtil.getEMF().createEntityManager();
-		
-		em.getTransaction().begin();
 		em.merge(book);
-		em.getTransaction().commit();
-		
 	}
 
 	public void delete(int id) {
-		EntityManager em = EntityManagerUtil.getEMF().createEntityManager();
-		
 		Book book = em.find(Book.class, id);
-		
-		em.getTransaction().begin();
 		em.remove(book);
-		em.getTransaction().commit();
 	}
 }
