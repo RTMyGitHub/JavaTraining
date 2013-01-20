@@ -20,13 +20,6 @@
 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
 		<property name="persistenceUnitName" value="bookStore" />
 		<property name="dataSource" ref="dataSource" />
-		<property name="jpaPropertyMap">
-			<props>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
-			</props>
-		</property>
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
