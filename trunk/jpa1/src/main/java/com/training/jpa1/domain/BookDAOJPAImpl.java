@@ -1,8 +1,8 @@
-package com.training.jpa1;
+package com.training.jpa1.domain;
 
 import javax.persistence.EntityManager;
 
-import com.trainig.jpa.util.EntityManagerUtil;
+import com.training.jpa1.util.EntityManagerUtil;
 
 public class BookDAOJPAImpl implements BookDAO {
 

@@ -5,4 +5,4 @@
  * @author Venkata
  *
  */
-package com.trainig.jpa.util;
+package com.training.jpa1.util;

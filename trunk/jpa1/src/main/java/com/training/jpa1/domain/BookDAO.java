@@ -1,4 +1,4 @@
-package com.training.jpa1;
+package com.training.jpa1.domain;
 
 public interface BookDAO {
 	

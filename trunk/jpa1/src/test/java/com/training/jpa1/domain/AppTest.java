@@ -1,4 +1,4 @@
-package com.training.jpa1;
+package com.training.jpa1.domain;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
