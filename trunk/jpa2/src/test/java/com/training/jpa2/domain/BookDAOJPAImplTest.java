@@ -4,13 +4,20 @@ import java.util.Date;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:spring-config.xml")
 public class BookDAOJPAImplTest {
+	
+	@Autowired
+	private BookDAO dao;
 
 	@Ignore
 	public void testCreate() throws Exception {
-
-		BookDAO dao = new BookDAOJPAImpl();
 
 		Book book = new Book();
 		book.setAuthor("Cathy Sierra");
@@ -33,10 +40,8 @@ public class BookDAOJPAImplTest {
 		dao.create(book);
 	}
 
-	@Test
+	@Ignore
 	public void testFindByPrimaryKey() throws Exception {
-
-		BookDAO dao = new BookDAOJPAImpl();
 
 		Book book = dao.findByPrimaryKey(7);
 
@@ -44,12 +49,10 @@ public class BookDAOJPAImplTest {
 		System.out.println("Publisher = " + book.getPublisher());
 	}
 
-	@Ignore
+	@Test
 	public void testUpdate() throws Exception {
 
-		BookDAO dao = new BookDAOJPAImpl();
-
-		Book book = dao.findByPrimaryKey(4);
+		Book book = dao.findByPrimaryKey(7);
 
 		book.setAuthor("Cathy Sierra & Bert Bates");
 
@@ -58,7 +61,6 @@ public class BookDAOJPAImplTest {
 
 	@Ignore
 	public void testDelete() throws Exception {
-		BookDAO dao = new BookDAOJPAImpl();
 		dao.delete(4);
 	}
 

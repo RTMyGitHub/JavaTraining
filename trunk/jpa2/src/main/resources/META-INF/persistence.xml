@@ -7,8 +7,6 @@
 	<persistence-unit name="bookStore">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		<class>com.training.jpa1.Book</class>
-		
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />

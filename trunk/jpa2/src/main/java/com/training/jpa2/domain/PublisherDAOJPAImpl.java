@@ -1,22 +1,22 @@
 package com.training.jpa2.domain;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.training.jpa2.util.EntityManagerUtil;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class PublisherDAOJPAImpl implements PublisherDAO {
+	
+	@PersistenceContext(unitName="bookStore")
+	private EntityManager em;
 
 	public void create(Publisher publisher) {
-		
-		EntityManager em = EntityManagerUtil.getEMF().createEntityManager();
-		em.getTransaction().begin();
 		em.persist(publisher);
-		em.getTransaction().commit();
 	}
 
 	public Publisher findByName(String name) {
-		EntityManager em = EntityManagerUtil.getEMF().createEntityManager();
 		
 		Query query = em.createQuery("select pub from Publisher pub where pub.name = ?");
 		query.setParameter(1, name);
