@@ -2,7 +2,7 @@ package com.training.jpa1;
 
 import javax.persistence.EntityManager;
 
-import com.trainig.jpa.util.EntityManagerUtil;
+import com.training.jpa.util.EntityManagerUtil;
 
 public class BookDAOJPAImpl implements BookDAO {
 

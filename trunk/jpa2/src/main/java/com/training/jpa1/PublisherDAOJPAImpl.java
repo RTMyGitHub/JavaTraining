@@ -3,7 +3,7 @@ package com.training.jpa1;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.trainig.jpa.util.EntityManagerUtil;
+import com.training.jpa.util.EntityManagerUtil;
 
 public class PublisherDAOJPAImpl implements PublisherDAO {
 

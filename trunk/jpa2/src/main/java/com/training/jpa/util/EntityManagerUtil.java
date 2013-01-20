@@ -1,4 +1,4 @@
-package com.trainig.jpa.util;
+package com.training.jpa.util;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
