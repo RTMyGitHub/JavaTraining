@@ -4,5 +4,5 @@ grant all privileges to bookstore
 
 --Now, login as bookstore and execute the following
 
-create table book(book_id int, title varchar2(30), author varchar2(30), number_of_pages int, isbn varchar2(10), pub_date date);
+create table book(book_id int primary key, title varchar2(30), author varchar2(30), number_of_pages int, isbn varchar2(10), pub_date date);
 
