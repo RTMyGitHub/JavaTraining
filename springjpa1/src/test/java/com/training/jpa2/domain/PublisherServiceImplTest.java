@@ -15,7 +15,6 @@ public class PublisherServiceImplTest {
 	
 	@Test
 	public void testCreate() {
-
 		Publisher publisher = new Publisher();
 		
 		publisher.setName("Oracle Press");

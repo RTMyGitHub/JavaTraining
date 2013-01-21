@@ -40,16 +40,16 @@ public class BookDAOJPAImplTest {
 		dao.create(book);
 	}
 
-	@Ignore
+	@Test
 	public void testFindByPrimaryKey() throws Exception {
 
-		Book book = dao.findByPrimaryKey(7);
+		Book book = dao.findByPrimaryKey(11);
 
 		System.out.println("book = " + book);
 		System.out.println("Publisher = " + book.getPublisher());
 	}
 
-	@Test
+	@Ignore
 	public void testUpdate() throws Exception {
 
 		Book book = dao.findByPrimaryKey(7);
