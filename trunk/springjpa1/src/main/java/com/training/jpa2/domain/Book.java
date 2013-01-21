@@ -8,6 +8,7 @@ import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Book implements Serializable {
 	@Column(name = "pub_date")
 	private Date publisherDate;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
 
