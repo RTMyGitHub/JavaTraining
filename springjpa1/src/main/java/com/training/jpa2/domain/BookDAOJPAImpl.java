@@ -22,7 +22,7 @@ public class BookDAOJPAImpl implements BookDAO {
 	public void update(Book book) {
 		em.merge(book);
 	}
-
+	
 	public void delete(int id) {
 		Book book = em.find(Book.class, id);
 		em.remove(book);
