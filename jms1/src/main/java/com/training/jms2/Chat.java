@@ -77,11 +77,13 @@ public class Chat implements javax.jms.MessageListener {
 	/* Run the Chat Client */
 	public static void main(String[] args) {
 		try {
-			// args[0]=topicFactory; args[1]=topicName; args[2]=username
-			Chat chat = new Chat("TopicCF", "topic1", "system");
+			String username = args[0];
+			Chat chat = new Chat("TopicCF", "topic1", username);
+			
 			// Read from command line
 			BufferedReader commandLine = new java.io.BufferedReader(
 					new InputStreamReader(System.in));
+			
 			// Loop until the word "exit" is typed
 			while (true) {
 				String s = commandLine.readLine();
