@@ -21,13 +21,14 @@ public class MessageSenderTest {
 
 		// Read from command line
 		BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
+		
 		// Loop until the word "exit" is typed
 		while (true) {
-			String s = commandLine.readLine();
-			if (s.equalsIgnoreCase("exit")) {
+			String stringLine = commandLine.readLine();
+			if (stringLine.equalsIgnoreCase("exit")) {
 				System.exit(0);
 			} else
-				messageSender.sendMessage(s);
+				messageSender.sendMessage(stringLine);
 		}
 	}
 

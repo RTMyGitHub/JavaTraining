@@ -6,21 +6,23 @@ import javax.jms.Queue;
 import javax.jms.TextMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessagePoller {
+public class MessageReceiver {
 	
 	@Autowired
 	private JmsTemplate jmsTemplate;
 	
 	@Autowired
-	private Queue testQueue;
+	@Qualifier("statementProcessingQueue")
+	private Queue statementProcessingQueue;
 
 	public void receiveMessage() throws JMSException
 	{
-		Message message = jmsTemplate.receive(testQueue);
+		Message message = jmsTemplate.receive(statementProcessingQueue);
 		if (message instanceof TextMessage)
 		{
 			TextMessage textMsg = (TextMessage) message;
