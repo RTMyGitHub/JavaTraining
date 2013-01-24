@@ -10,8 +10,12 @@
 		<property name="connectionFactory" ref="mqConnectionFactory" />
 	</bean>
 
-	<bean id="mqSendQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<property name="physicalName" value="TestQueueOne"></property>
+	<bean id="statementProcessingQueue" class="org.apache.activemq.command.ActiveMQQueue">
+		<property name="physicalName" value="StatementProcessingQueue"></property>
+	</bean>
+	
+	<bean id="stockTickerTopic" class="org.apache.activemq.command.ActiveMQTopic">
+		<property name="physicalName" value="StockTickerTopic"></property>
 	</bean>
 
 	<bean id="mqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
@@ -25,7 +29,7 @@
 	<bean id="messageListenerContainer"
 		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="mqConnectionFactory" />
-		<property name="destination" ref="mqSendQueue" />
+		<property name="destination" ref="stockTickerTopic" />
 		<property name="messageListener" ref="messageListener" />
 		<property name="concurrentConsumers" value="2" />
 	</bean>

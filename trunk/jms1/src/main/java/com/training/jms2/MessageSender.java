@@ -4,6 +4,7 @@ import javax.jms.JMSException;
 import javax.jms.Queue;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ public class MessageSender
 	private JmsTemplate jmsTemplate;
 	
 	@Autowired
+	@Qualifier("statementProcessingQueue")
 	private Queue testQueue;
 
 	public void sendMessage(String message) throws JMSException

@@ -8,14 +8,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:spring-config.xml")
-public class MessagePollerTest {
+public class MessageReceiverTest {
 	
 	@Autowired
-	private MessagePoller poller;
+	private MessageReceiver receiver;
 	
 	@Test
 	public void testReceive() throws Exception {
-		poller.receiveMessage();
+		receiver.receiveMessage();
 	}
 
 }
