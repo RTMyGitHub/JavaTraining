@@ -1,0 +1,1 @@
+This is a CarRental web application using Servlets to display the list of cars that are stored in the database.
