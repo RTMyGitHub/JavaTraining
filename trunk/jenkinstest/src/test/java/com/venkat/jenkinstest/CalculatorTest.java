@@ -11,6 +11,13 @@ public class CalculatorTest {
 		
 		double result = new Calculator().add(2, 5);
 		assertEquals(8, result, 0);
+	}
+	
+	@Test
+	public void testDivideRegular() throws Exception {
+		
+		double result = new Calculator().divide(10, 2, true);
+		System.out.println("Result = " + result);
 		
 	}
 
