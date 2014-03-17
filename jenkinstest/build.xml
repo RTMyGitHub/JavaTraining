@@ -1,0 +1,114 @@
+<project basedir="." name="unclebob" default="test">
+
+	<property name="distDir" value="dist" />
+	<property name="artifactName" value="jenkins-test.jar" />
+
+	<property name="src" value="src/main/java" />
+	<property name="src.test" value="src/test/java" />
+
+	<property name="lib.dir" value="lib/ant" />
+	<property name="junit.home" value="lib/junit" />
+	<property name="cobertura.home" value="lib/cobertura" />
+
+	<property name="junit.results" value="test-results" />
+	<property name="cobertura.reports" value="cobertura-reports" />
+
+	<property name="cobertura.classes" value="coburtura" />
+
+
+	<property name="cobertura.dir" value="lib/cobertura" />
+
+	<path id="cobertura.classpath">
+		<fileset dir="${cobertura.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+	<target name="clean">
+		<delete dir="${distDir}" />
+		<delete file="${basedir}/cobertura.ser"/>
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${distDir}" />
+		<mkdir dir="${cobertura.classes}" />
+		<mkdir dir="${cobertura.reports}" />
+	</target>
+
+	<!-- Build the CLASSPATH -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+		<fileset dir="${junit.home}" includes="*.jar" />
+		<fileset dir="${cobertura.home}" includes="*.jar" />
+	</path>
+
+	<path id="classpath.test">
+		<path refid="classpath" />
+		<pathelement location="${distDir}" />
+	</path>
+
+	<target name="compile" depends="init" description="compile the source">
+
+		<javac destdir="${distDir}" debug="on">
+			<src path="${src}" />
+			<src path="${src.test}" />
+			<classpath refid="classpath" />
+		</javac>
+
+	</target>
+
+	<target name="test" depends="compile" description="Run unit tests">
+		<delete dir="${junit.results}" />
+		<mkdir dir="${junit.results}" />
+
+		<junit fork="no" errorProperty="test.failed" failureProperty="test.failed">
+			<classpath refid="classpath.test" />
+			<formatter type="plain" usefile="false" />
+			<formatter type="xml" />
+			<batchtest todir="${junit.results}">
+				<fileset dir="${distDir}" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+
+		<fail message="Tests failed. Please see test reports" if="test.failed" />
+	</target>
+
+	<target name="coburtura" depends="compile">
+
+		<delete file="${basedir}/cobertura.ser" />
+		<delete dir="${cobertura.classes}" />
+
+		<cobertura-instrument todir="${cobertura.classes}" datafile="${basedir}/cobertura.ser">
+			<fileset dir="${distDir}">
+				<include name="**/*.class" />
+				<exclude name="**/*Test.class" />
+			</fileset>
+		</cobertura-instrument>
+
+		<delete dir="${junit.results}" />
+		<mkdir dir="${junit.results}" />
+
+		<junit fork="yes" errorProperty="test.failed" failureProperty="test.failed">
+
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser" />
+
+			<classpath location="${cobertura.classes}" />
+			<classpath location="${distDir}" />
+			
+			<classpath refid="classpath.test" />
+
+			<formatter type="xml" />
+
+			<batchtest todir="${junit.results}">
+				<fileset dir="${src.test}" includes="**/*Test.java" />
+			</batchtest>
+
+		</junit>
+
+		<delete dir="${cobertura.reports}" />
+		<cobertura-report format="html" datafile="${basedir}/cobertura.ser" destdir="${cobertura.reports}/" srcdir="${src}" />
+	</target>
+
+</project>
