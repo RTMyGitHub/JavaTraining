@@ -108,7 +108,9 @@
 		</junit>
 
 		<delete dir="${cobertura.reports}" />
+		
 		<cobertura-report format="html" datafile="${basedir}/cobertura.ser" destdir="${cobertura.reports}/" srcdir="${src}" />
+		<cobertura-report format="xml" datafile="${basedir}/cobertura.ser" destdir="${cobertura.reports}/" srcdir="${src}" />
 	</target>
 
 </project>
