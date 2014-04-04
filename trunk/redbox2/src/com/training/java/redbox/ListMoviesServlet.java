@@ -19,14 +19,14 @@ import com.training.java.redbox.domain.MovieDAOJDBCImpl;
  */
 public class ListMoviesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		
 		MovieDAO dao = new MovieDAOJDBCImpl();
 		try {
 			List<Movie> movies = dao.getAllMovies();
@@ -42,5 +42,4 @@ public class ListMoviesServlet extends HttpServlet {
 		}
 
 	}
-
 }
