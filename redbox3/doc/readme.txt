@@ -1,0 +1,1 @@
+Struts is used in redbox application.
