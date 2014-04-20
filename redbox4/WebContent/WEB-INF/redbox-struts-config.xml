@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+          
+<struts-config>
+
+	<form-beans>
+		<form-bean name="CustomerForm" type="com.training.java.redbox.CustomerForm"></form-bean>
+	</form-beans>
+	
+	<action-mappings>
+		
+		<action path="/listMovies" type="com.training.java.redbox.ListMoviesAction">
+			<forward name="list" path="/WEB-INF/ShowMovies.jsp"></forward>
+		</action>
+		
+		<action path="/signup" type="com.training.java.redbox.SignupAction">
+			<forward name="signup" path="/WEB-INF/Signup.jsp"></forward>
+		</action>
+		
+		<action path="/saveCustomer" type="com.training.java.redbox.SaveCustomerAction" name="CustomerForm" validate="true" input="/WEB-INF/Signup.jsp" scope="request">
+			<forward name="login" path="/WEB-INF/Login.jsp"></forward>
+		</action>
+		
+		
+	</action-mappings>
+	
+	<message-resources parameter="redbox"></message-resources>
+	
+</struts-config>          
