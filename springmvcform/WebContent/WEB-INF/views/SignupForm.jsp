@@ -8,16 +8,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<style type="text/css">
+.errorMessgae
+{
+color:red;
+}
+</style>
+
 </head>
 <body>
 
 <sf:form method="POST" modelAttribute="customer" action="/springmvcform/customer/signup.do">
 
+<sf:errors path="*" cssClass="errorMessgae"/>
+
 <h2>Please enter the customer details and press Submit</h2>
 
-First Name 	: <sf:input path="firstName"/> <br/><br/>
-Last Name 	: <sf:input path="lastName"/> <br/><br/>
-Age 	   	:<sf:input path="age"/> <br/><br/>
+First Name 	: <sf:input path="firstName"/> <sf:errors path="firstName"/> <br/><br/>
+Last Name 	: <sf:input path="lastName"/> <sf:errors path="lastName"/> <br/><br/>
+Age 	   	:<sf:input path="age"/> <sf:errors path="age"/> <br/><br/>
 
 <br/> <br/>
 
