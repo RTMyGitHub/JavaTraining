@@ -26,6 +26,9 @@
 		<property name="username" value="redbox"></property>
 		<property name="password" value="redbox"></property>
 	</bean>
-
-
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="redbox"></property>
+	</bean>
+	
 </beans>

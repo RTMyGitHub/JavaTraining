@@ -1,11 +1,19 @@
 package com.training.java.spring.mvc;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
 public class Customer {
 
+	@NotEmpty
 	private String firstName;
-	private String lastName;
-	private int age;
 
+	@NotEmpty
+	private String lastName;
+
+	@Range(min = 20)
+	private int age;
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -29,15 +37,15 @@ public class Customer {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	@Override
 	public String toString() {
-		
+
 		StringBuilder str = new StringBuilder();
 		str.append("First name = " + getFirstName() + " , ");
 		str.append("Last name = " + getLastName() + " , ");
 		str.append("Age = " + getAge());
-		
+
 		return str.toString();
 	}
 }
