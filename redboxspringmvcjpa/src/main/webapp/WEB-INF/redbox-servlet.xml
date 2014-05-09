@@ -39,7 +39,6 @@
 
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="packagesToScan" value="com.training"></property>
 		<property name="persistenceXmlLocation" value="META-INF/persistence.xml" />
 		<property name="persistenceUnitName" value="redbox" />
 		<property name="dataSource" ref="dataSource" />
