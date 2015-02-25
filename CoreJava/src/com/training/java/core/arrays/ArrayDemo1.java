@@ -2,7 +2,7 @@ package com.training.java.core.arrays;
 
 /**
  * In this example, we will learn how to declare an Array, creating and
- * initializing an array, adding elements to an array and read from an array..
+ * initializing an array, adding elements to an array and read from an array...
  * 
  * 
  * @author Hari
