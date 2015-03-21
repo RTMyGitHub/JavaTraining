@@ -1,0 +1,20 @@
+AnimalCollector
+
+add(Collection c)
+{
+  
+}
+
+
+
+ArrayList al = new ArrayList();
+
+al.add();
+al.add();
+
+HashSet s1 = new HashSet();
+s1.add();
+s1.add();
+
+animalCollector.add(s1)
+

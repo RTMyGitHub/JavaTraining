@@ -1,0 +1,7 @@
+Design a Car with a seat belt.
+
+If car is moving, the seat belt is required. If seat belt is not clicked, indicator should go on..
+If car is started and not moving, seat belt is not required
+When car is stopped, the indicator should be off
+
+if car is in start mode, and seat belt is
