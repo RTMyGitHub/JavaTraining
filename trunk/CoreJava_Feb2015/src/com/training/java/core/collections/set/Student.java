@@ -1,6 +1,6 @@
 package com.training.java.core.collections.set;
 
-public class Student {
+public class Student implements Comparable<Student> {
 
 	private long id;
 	private String name;
@@ -55,6 +55,19 @@ public class Student {
 
 		return (int) this.id;
 		
+	}
+
+	@Override
+	public int compareTo(Student that) {
+		
+		return this.name.compareTo(that.getName());
+		
+	}
+	
+	@Override
+	public String toString() {
+		
+		return "id = " + id + " : Name = " + name + " : city = " + city;
 	}
 
 }
