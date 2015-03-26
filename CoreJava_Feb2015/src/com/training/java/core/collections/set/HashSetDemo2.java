@@ -6,7 +6,6 @@ import java.util.Set;
 public class HashSetDemo2 {
 
 	public static void main(String[] args) {
-		
 		Set<Student> students = new HashSet<Student>();
 		
 		Student student1 = new Student(1, "Yuri", "D.C", "MD", "12345");
