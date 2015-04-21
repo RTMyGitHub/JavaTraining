@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CustomerDAOJDBCImplDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DAOException {
 		
 		CustomerDAO dao = new CustomerDAOJDBCImpl();
 		

@@ -11,7 +11,7 @@ import java.util.List;
 public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 
 	@Override
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers() throws DAOException {
 		
 		Connection con = null;
 		Statement statement = null;
@@ -41,6 +41,7 @@ public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 			}
 		} catch(SQLException ex) {
 			ex.printStackTrace();
+			throw new DAOException("Error occured while selecting", ex);
 		} finally {
 			closeResources(rs, statement, con);
 		}
@@ -49,7 +50,7 @@ public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 	}
 
 	@Override
-	public void createCustomer(Customer customer) {
+	public void createCustomer(Customer customer) throws DAOException {
 		
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -77,13 +78,14 @@ public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 			System.out.println("rowsInserted = " + rowsInserted);
 		} catch(SQLException ex) {
 			ex.printStackTrace();
+			throw new DAOException("Error occured while creating the customer", ex);
 		} finally {
 			closeResources(null, statement, con);
 		}
 	}
 
 	@Override
-	public void updateCustomer(Customer customer) {
+	public void updateCustomer(Customer customer) throws DAOException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
@@ -115,13 +117,14 @@ public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 			System.out.println("rowsUpdated = " + rowsUpdated);
 		} catch(SQLException ex) {
 			ex.printStackTrace();
+			throw new DAOException("Error occured while updating", ex);
 		} finally {
 			closeResources(null, statement, con);
 		}
 	}
 
 	@Override
-	public void deleteCustomer(int customerId) {
+	public void deleteCustomer(int customerId) throws DAOException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
@@ -137,6 +140,7 @@ public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 			System.out.println("rowsDeleted = " + rowsDeleted);
 		} catch(SQLException ex) {
 			ex.printStackTrace();
+			throw new DAOException("Error occured while deleting", ex);
 		} finally {
 			closeResources(null, statement, con);
 		}

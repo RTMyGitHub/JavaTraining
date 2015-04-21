@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface CustomerDAO {
 	
-	List<Customer> getAllCustomers();
-	void createCustomer(Customer customer);
-	void updateCustomer(Customer customer);
-	void deleteCustomer(int customerId);
+	List<Customer> getAllCustomers() throws DAOException;
+	void createCustomer(Customer customer) throws DAOException;
+	void updateCustomer(Customer customer) throws DAOException;
+	void deleteCustomer(int customerId) throws DAOException;
 
 }
