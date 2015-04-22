@@ -145,4 +145,10 @@ public class CustomerDAOJDBCImpl extends BaseDAO implements CustomerDAO {
 			closeResources(null, statement, con);
 		}
 	}
+
+	@Override
+	public Customer findByPrimaryKey(int id) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
