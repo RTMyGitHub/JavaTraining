@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>servlet2_2015</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ListCustomersServlet</display-name>
+    <servlet-name>ListCustomersServlet</servlet-name>
+    <servlet-class>com.training.amazon.servlets.ListCustomersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListCustomersServlet</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddCustomerServlet</servlet-name>
+    <servlet-class>com.training.amazon.servlets.AddCustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCustomerServlet</servlet-name>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCustomerServlet</display-name>
+    <servlet-name>DeleteCustomerServlet</servlet-name>
+    <servlet-class>com.training.amazon.servlets.DeleteCustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCustomerServlet</servlet-name>
+    <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+</web-app>
