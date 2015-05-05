@@ -6,5 +6,4 @@ public interface OrdersDAO {
 	
 	void createOrder(int customerId, Order order);
 	List<Order> getOrdersForCustomer(int customerId);
-
 }
