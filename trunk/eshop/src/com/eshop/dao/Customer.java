@@ -1,5 +1,8 @@
 package com.eshop.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
 
 	private int id;
@@ -9,6 +12,7 @@ public class Customer {
 	private String city;
 	private String state;
 	private String zipCode;
+	private List<Order> orders = new ArrayList<Order>();
 
 	public Customer(int id, String firstName, String lastName, String address,
 			String city, String state, String zipCode) {
@@ -48,5 +52,13 @@ public class Customer {
 
 	public String getZipCode() {
 		return zipCode;
+	}
+
+	public void addOrder(Order order) {
+		this.orders.add(order);
+	}
+
+	public List<Order> getOrders() {
+		return orders;
 	}
 }
