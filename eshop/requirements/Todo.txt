@@ -1,0 +1,13 @@
+Implement the methods in ProductDAOJDBCImpl
+   --> For a given order id, go to order_details and products table (join by order_id) and get the products for this order id
+   --> Populate all these product information into Product class and add them to a List and return
+
+Implement the methods in OrderDAOJDBCImpl
+   --> createOrder takes the customer id and Order object as input. 
+   		--> Insert into order table first and then get the order id (first get the sequence (orders_seq) and then insert into orders table)
+   		--> Now, insert into order_details table for each product in the order (use the same order id that we got from above step)
+   --> getOrdersForCustomers takes customer id as input and then go to orders table (select * from orders where customer_id = ?)
+   --> For each order, get the order id and then call the ProductDAO to get the associated products for this order (returns List<Product>)
+       -->Create an order object and populate the order details and also the List<Product> that you just got from above step
+       
+       		
