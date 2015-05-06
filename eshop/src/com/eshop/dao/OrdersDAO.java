@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface OrdersDAO {
 	
-	void createOrder(int customerId, Order order);
-	List<Order> getOrdersForCustomer(int customerId);
+	void createOrder(int customerId, Order order) throws DAOException;
+	List<Order> getOrdersForCustomer(int customerId) throws DAOException;
 }

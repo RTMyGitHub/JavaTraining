@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ProductsDAO {
 	
-	List<Product> getByOrderId(int orderId);
+	List<Product> getByOrderId(int orderId) throws DAOException;
 }
