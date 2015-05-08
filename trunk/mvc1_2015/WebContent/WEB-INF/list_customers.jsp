@@ -1,5 +1,8 @@
-<%@page import="com.training.amazon.dao.Customer"%>
+<%@page import="com.eshop.dao.Customer"%>
 <%@page import="java.util.List"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,11 +23,6 @@ th {
 
 </head>
 <body>
-
-	<%
-		List<Customer> customers = (List<Customer>) request.getAttribute("customerList");
-	%>
-	
 	<table>
 		<tr>
 			<th>First Name</th>
@@ -34,26 +32,16 @@ th {
 			<th>State</th>
 			<th>Zip</th>
 		</tr>
-		
-		<%
-		for(Customer customer : customers)
-		{
-		%>
-		
-		<tr>
-			<td><%=customer.getFirstName()%></td>
-			<td><%=customer.getLastName()%></td>
-			<td><%=customer.getAddress()%></td>
-			<td><%=customer.getCity()%></td>
-			<td><%=customer.getState()%></td>
-			<td><%=customer.getZipCode()%></td>
-		</tr>	
-			
-		<% 
-		}
-		%>	
+		<c:forEach items="${customerList}" var="customer">
+			<tr>
+				<td>${customer.firstName}</td>
+				<td>${customer.lastName}</td>
+				<td>${customer.address}</td>
+				<td>${customer.city}</td>
+				<td>${customer.state}</td>
+				<td>${customer.zipCode}</td>
+			</tr>	
+		</c:forEach>
 	</table>	
-
-
 </body>
 </html>

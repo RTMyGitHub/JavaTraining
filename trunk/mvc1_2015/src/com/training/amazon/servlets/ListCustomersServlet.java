@@ -30,6 +30,9 @@ public class ListCustomersServlet extends HttpServlet {
 		try {
 			List<Customer> customers = dao.getAllCustomers();
 			
+			Customer fc = customers.get(0);
+			
+			request.setAttribute("firstCustomer", fc);
 			request.setAttribute("customerList", customers);
 			
 			//forward to JSP
