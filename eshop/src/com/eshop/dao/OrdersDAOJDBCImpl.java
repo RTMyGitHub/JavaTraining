@@ -42,7 +42,7 @@ public class OrdersDAOJDBCImpl extends BaseDAO implements OrdersDAO {
 			System.out.println("rowsInserted = " + rowsInserted);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new DAOException("Error occured while creating the customer",
+			throw new DAOException("Error occured while creating an order",
 					ex);
 		} finally {
 			closeResources(null, statement, con);
@@ -60,7 +60,7 @@ public class OrdersDAOJDBCImpl extends BaseDAO implements OrdersDAO {
 		try {
 			con = getConnection();
 
-			String sql = "insert into order_details values (order_details_seq,?,?)";
+			String sql = "insert into order_details values (order_details_seq.nextval,?,?)";
 
 			List<Product> products = order.getProducts();
 
@@ -74,7 +74,7 @@ public class OrdersDAOJDBCImpl extends BaseDAO implements OrdersDAO {
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			throw new DAOException("Error occured while creating the customer",
+			throw new DAOException("Error occured while inserting the order",
 					ex);
 		} finally {
 			closeResources(null, statement, con);
@@ -94,8 +94,7 @@ public class OrdersDAOJDBCImpl extends BaseDAO implements OrdersDAO {
 		try {
 			con = getConnection();
 
-			String sql = "select 	* " + "from 		orders "
-					+ "where   	customer_id = ?";
+			String sql = "select * from orders where customer_id = ?";
 
 			statement = con.prepareStatement(sql);
 			statement.setInt(1, customerId);
@@ -104,7 +103,6 @@ public class OrdersDAOJDBCImpl extends BaseDAO implements OrdersDAO {
 
 			while (rs.next()) {
 				int id = rs.getInt("order_id");
-				int custId = rs.getInt("customer_id");
 				String order_Num = rs.getString("order_number");
 				Date order_Date = rs.getDate("order_date");
 				double order_amount = rs.getDouble("order_amount");
@@ -112,7 +110,7 @@ public class OrdersDAOJDBCImpl extends BaseDAO implements OrdersDAO {
 
 				products = dao.getByOrderId(id);
 
-				Order order = new Order(id, custId,order_Num, order_Date,
+				Order order = new Order(id, order_Num, order_Date,
 						order_amount, products);
 				orders.add(order);
 			}
