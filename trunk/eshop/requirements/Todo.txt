@@ -9,7 +9,32 @@ Implement the methods in OrderDAOJDBCImpl
    --> getOrdersForCustomers takes customer id as input and then go to orders table (select * from orders where customer_id = ?)
    --> For each order, create an order object and populate the order details
        
+	Customers
+	Orders
+	Products
 	
+1. Being a new customer, I need to be able to sign up..username, password, first name, last name, city, state, zip
+2. As a customer, I need to be able to see all the products..
+3. Customer can add a product to the cart, add another product to cart..etc.
+4. When customer clicks on "Check out", we create an order in the database
+5. Customer should be able to view all of his orders
+
+6. Customer should be able to view the order before placing and should be able to delete any item in the cart
+
+
+CustomerRegistrationServlet - /signup - doGET  - forwards to a signup JSP (CustomerRegistration.jsp)
+                                        doPost - takes the customer details and saves the details in the database
+
+                                        
+HomePageServlet - retrieve all the products from database and display..Every product should have Add to cart image..we will display number of items in the cart
+
+ShoppingCartServlet - will be able to add products to cart (session)
+
+CheckoutServlet - save the order in the database
+
+
+
+
        
        
        		
