@@ -21,15 +21,15 @@ public class ProductsDAOJDBCImpl extends BaseDAO implements ProductsDAO {
 		{
 			con = getConnection();
 
-			String sql = "select 	p.product_id product_id, p.product_type, p.product_name, p.price " + 
+			String sql = "select 	p.product_id pid, p.product_type, p.product_name, p.price " + 
 					 	"from 		order_details od, products p " + 
-					 	"where   	od.order_id = p.order_id " +
+					 	"where   	od.product_id = p.product_id " +
 					 	"and		od.order_id = ?";		
 			
 			statement = con.prepareStatement(sql);
 			statement.setInt(1, orderId);
 			
-			rs = statement.executeQuery(sql);
+			rs = statement.executeQuery();
 			
 			while(rs.next())
 			{
