@@ -37,7 +37,7 @@ th {
 				<td>${product.type}</td>
 				<td>${product.price}</td>
 				
-				<td><a href="/eshop2/cart?productId=${product.id}">Add to Cart</a></td>
+				<td><a href="/eshop3/cart?productId=${product.id}">Add to Cart</a></td>
 			</tr>	
 		</c:forEach>
 	</table>	

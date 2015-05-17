@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.eshop.dao.Product;
-import com.eshop.dao.ProductsDAO;
-import com.eshop.dao.ProductsDAOJDBCImpl;
+import com.eshop.service.ProductsService;
 
 /**
  * Servlet implementation class ShoppingCartServlet
@@ -27,8 +26,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		String productIdStr = request.getParameter("productId");
 		int productId = Integer.parseInt(productIdStr);
 		
-		ProductsDAO dao = new ProductsDAOJDBCImpl();
-		Product product = dao.findByPrimaryKey(productId);
+		Product product = new ProductsService().getById(productId);
 		
 		HttpSession session = request.getSession();
 		
