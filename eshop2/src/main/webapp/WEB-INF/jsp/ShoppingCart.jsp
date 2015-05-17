@@ -33,14 +33,14 @@ th {
 				<td>${product.type}</td>
 				<td>${product.price}</td>
 
-				<td><a href="/eshop2/cart?productId=${product.id}">Add to
+				<td><a href="/eshop3/cart?productId=${product.id}">Add to
 						Cart</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	
-	<h2>Do you want to shop more?Please click <a href="/eshop2">here</a> </h2> 
-	<h3>If you are done shopping, please click <a href="/eshop2/checkout">here</a></h3>
+	<h2>Do you want to shop more?Please click <a href="/eshop3">here</a> </h2> 
+	<h3>If you are done shopping, please click <a href="/eshop3/checkout">here</a></h3>
 
 </body>
 </html>
