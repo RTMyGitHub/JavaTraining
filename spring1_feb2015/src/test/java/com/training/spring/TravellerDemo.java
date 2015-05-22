@@ -1,18 +1,15 @@
 package com.training.spring;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class TravellerDemo {
 
 	public static void main(String[] args) {
 		
-		Vehicle v = new Truck();
-		
-		Traveller shovan = new Traveller(v);
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+		Traveller shovan = context.getBean(Traveller.class);
 		shovan.travel();
-		
-		Traveller2 anteneh = new Traveller2();
-		anteneh.setVehicle(v);
-		
-		anteneh.travel();
 	}
 
 }
