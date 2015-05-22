@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.eshop.dao.Product;
 import com.eshop.service.ProductsService;
 
@@ -26,7 +29,10 @@ public class ShoppingCartServlet extends HttpServlet {
 		String productIdStr = request.getParameter("productId");
 		int productId = Integer.parseInt(productIdStr);
 		
-		Product product = new ProductsService().getById(productId);
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+		ProductsService service = context.getBean(ProductsService.class);
+		
+		Product product = service.getById(productId);
 		
 		HttpSession session = request.getSession();
 		

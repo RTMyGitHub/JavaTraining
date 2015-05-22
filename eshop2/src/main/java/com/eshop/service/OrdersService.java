@@ -4,24 +4,27 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.eshop.dao.Order;
 import com.eshop.dao.OrdersDAO;
-import com.eshop.dao.OrdersDAOJDBCImpl;
 
+@Service
 public class OrdersService {
-
+	
+	@Autowired
+	private OrdersDAO dao;
+	
 	public void placeOrder(int customerId, Order order) {
-		OrdersDAO dao = new OrdersDAOJDBCImpl();
 		dao.createOrder(customerId, order);
 	}
 
 	public List<Order> getOrders(int customerId) {
-		OrdersDAO dao = new OrdersDAOJDBCImpl();
 		return dao.getOrdersForCustomer(customerId);
 	}
 
 	public List<Order> getOrdersForTheMonth(int customerId) {
-		OrdersDAO dao = new OrdersDAOJDBCImpl();
 		List<Order> orders = dao.getOrdersForCustomer(customerId);
 
 		List<Order> ordersForTheMonth = new ArrayList<Order>();

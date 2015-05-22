@@ -13,7 +13,7 @@
 	<h4>If you have any questions regarding this order,
 		please reference this order number.</h4>
 		
-	<h5>Click <a href="/eshop3">here</a> to go to home page.</h5>
+	<h5>Click <a href="/eshop4">here</a> to go to home page.</h5>
 		
 </body>
 </html>

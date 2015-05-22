@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.eshop.dao.Product;
-import com.eshop.dao.ProductsDAO;
-import com.eshop.dao.ProductsDAOJDBCImpl;
+import com.eshop.service.ProductsService;
 
 /**
  * Servlet implementation class HomePageServlet
@@ -23,8 +25,10 @@ public class HomePageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ProductsDAO dao = new ProductsDAOJDBCImpl();
-		List<Product> products = dao.getAllProducts();
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+		ProductsService service = context.getBean(ProductsService.class);
+
+		List<Product> products = service.getAllProducts();
 		
 		request.setAttribute("AllProducts", products);
 		
