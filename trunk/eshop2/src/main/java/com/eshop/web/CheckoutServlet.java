@@ -12,10 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.eshop.dao.Order;
 import com.eshop.dao.OrdersDAO;
 import com.eshop.dao.OrdersDAOJDBCImpl;
 import com.eshop.dao.Product;
+import com.eshop.service.OrdersService;
 
 /**
  * Servlet implementation class CheckoutServlet
@@ -34,8 +38,10 @@ public class CheckoutServlet extends HttpServlet {
 		
 		Order order = new Order(0, orderNumber, new Date(), orderAmount, products);
 		
-		OrdersDAO dao = new OrdersDAOJDBCImpl();
-		dao.createOrder(1, order);
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+		OrdersService service = context.getBean(OrdersService.class);
+		
+		service.placeOrder(1, order);
 		
 		session.removeAttribute("ShoppingCart");
 		
