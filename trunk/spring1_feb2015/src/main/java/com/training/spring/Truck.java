@@ -1,5 +1,8 @@
 package com.training.spring;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Truck implements Vehicle {
 
 	@Override

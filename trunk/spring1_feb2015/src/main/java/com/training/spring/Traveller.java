@@ -1,12 +1,15 @@
 package com.training.spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Traveller {
 	
+	@Autowired
+	@Qualifier("uma")
 	private Vehicle vehicle;
-	
-	public Traveller(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
 	
 	public void travel() {
 		vehicle.start();
