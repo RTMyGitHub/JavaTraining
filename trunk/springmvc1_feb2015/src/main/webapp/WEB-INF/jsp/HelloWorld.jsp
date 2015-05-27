@@ -1,0 +1,1 @@
+<h2>Hey, I am from Spring MVC - fancy web application framework :)</h2>
