@@ -12,7 +12,7 @@
 
 </head>
 <body>
-	<jsp:include page="Header.jsp"></jsp:include>
+	<%@include file="Header.jsp" %>
 	
 	<h3>If you are returning customer, please login. </h3> 
 	

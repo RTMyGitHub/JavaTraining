@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/eshop/styles/eshop.css"/>
 </head>
 <body>
-	<jsp:include page="Header.jsp"></jsp:include>
+	<%@include file="Header.jsp" %>
 	
 	<h3>Your order has been placed, and your order number is
 		${Order.orderNumber}. </h3>

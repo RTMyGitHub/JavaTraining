@@ -12,7 +12,7 @@
 </head>
 
 <body id="homePageBody">
-	<jsp:include page="Header.jsp"></jsp:include>
+	<%@include file="Header.jsp" %>
 	
 	<h2 id="mainHeading">Welcome to eShop</h2>
 	

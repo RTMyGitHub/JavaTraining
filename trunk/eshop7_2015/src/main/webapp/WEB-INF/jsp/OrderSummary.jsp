@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/eshop/styles/eshop.css"/>
 </head>
 <body>
-	<jsp:include page="Header.jsp"></jsp:include>
+	<%@include file="Header.jsp" %>
 	
 	<h3>Here is your order summary, please confirm.</h3>
 
