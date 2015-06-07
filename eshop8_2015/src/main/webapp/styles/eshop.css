@@ -1,0 +1,46 @@
+table, td, th {
+	border: 1px solid green;
+}
+
+table.list1 {
+	background-color: white;
+	border: 1px solid blue;
+}
+
+table.list1 th {
+	background-color: red;
+}
+
+
+th {
+	background-color: green;
+	color: white;
+}
+
+input {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#mainHeading{
+	color: green;
+	font-size: 32px;
+}
+
+img#cart {
+	height: 25px;
+	width: 30px;
+}
+
+h4.login {
+	color: green;
+}
+
+label {
+	width: 100px;
+}
+
+.glyphicon {
+	font-size: 28px;
+	color: green;
+}
