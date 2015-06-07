@@ -14,7 +14,7 @@
 
 <body id="signupPageBody">
 	
-	<jsp:include page="Header.jsp"></jsp:include>
+	<%@include file="Header.jsp" %>
 	
 	<c:url value='/signup' var="signupUrl"/>
 	<sf:form action="${signupUrl}" method="post" modelAttribute="customer">
