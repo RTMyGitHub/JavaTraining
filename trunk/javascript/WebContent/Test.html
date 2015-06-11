@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body id="myBody">
+
+<h2 id="greeting">Welcome to our store!!</h2>
+
+<button type="button" onclick="changeBackgroundColor()" id="clickMeButton">Click Me</button>
+
+
+<script type="text/javascript">
+	
+	var numberOfTimesClicked = 0;
+	
+	function changeBackgroundColor() {
+		numberOfTimesClicked++;
+		console.log("Number of times clicked = " + numberOfTimesClicked);
+		
+		var bodyElement = document.getElementById("myBody");
+		var greeting = document.getElementById("greeting");
+
+		if(numberOfTimesClicked % 2 == 0) {
+			//bodyElement.setAttribute("style", "background-color: blue");
+			greeting.innerHTML = "You clicked me even number of times";
+		} else {
+			//bodyElement.setAttribute("style", "background-color: red");
+			greeting.innerHTML = "You clicked me odd number of times";
+		}
+		
+		document.getElementById("greeting").setAttribute("style", "color: red");
+		document.getElementById("clickMeButton").innerHTML = "Shop More";
+	}
+</script>
+
+</body>
+</html>
