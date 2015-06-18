@@ -58,6 +58,7 @@ $(document).ready(function() {
 		var searchKey = $('#search').val();
 
 		if(searchKey == '') {
+			$('#update').html("");
 			return;
 		}
 		
@@ -65,17 +66,23 @@ $(document).ready(function() {
 		
 		$.getJSON('http://localhost:9090/restfulws/search.json', data, function(data) {
 			
-			var output = '<ul>';
-			
+			//var output = '<ul class="list-unstyled">';
+			var output = "";
 			var results = data.stringList;
 			$.each(results, function(index, value) {
-				output += "<li><h2>" + value + "</h2></li>";
+				output += "<a href='#' id='searchResult_"+index+"' onclick='copyToBox("+ index + ")'>" + value + "</a><br/>";
 			});
 			
-			output += "</ul>";
+			//output += "</ul>";
 			$('#update').html(output);
 		});
 	});
 });
+
+function copyToBox(id) {
+	var selectedContent = $("#searchResult_" + id).text();
+	$('#search').val(selectedContent);
+}
+
 
 
