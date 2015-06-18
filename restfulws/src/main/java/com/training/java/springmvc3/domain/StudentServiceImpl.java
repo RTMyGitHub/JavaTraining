@@ -1,5 +1,6 @@
 package com.training.java.springmvc3.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,14 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<Student> getAllStudents() {
-		return dao.getAllStudents();
+		Student student1 = new Student();
+		
+		student1.setFirstName("Venkat");
+		student1.setLastName("Hari");
+		
+		return Arrays.asList(student1);
+		
+		//return dao.getAllStudents();
 	}
 	
 }

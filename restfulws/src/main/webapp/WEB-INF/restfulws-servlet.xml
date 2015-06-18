@@ -8,6 +8,10 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc">
 
 	<mvc:annotation-driven />
+	
+	<mvc:resources location="/js/" mapping="/js/*"/>
+	
+	
 	<context:component-scan base-package="com.training.java.springmvc3.web"></context:component-scan>
 	<import resource="classpath:spring-config.xml" />
 
