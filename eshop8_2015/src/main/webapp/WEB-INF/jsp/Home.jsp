@@ -8,14 +8,24 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="/eshop/styles/eshop.css"/>
+<link rel="stylesheet" href="/eshop9/styles/eshop.css"/>
 </head>
 
 <body id="homePageBody">
 	<%@include file="Header.jsp" %>
 	
 	<div class="container">
-		<h2 id="mainHeading">Welcome to eShop</h2>
+		
+		<form action="/eshop9/product/search/" class="form-horizantal" method="post">
+			<div class="form-group form-inline row">
+				<input type="text" id="productSearch" name="productSearch" class="form-control">
+				<button type="submit" class="btn btn-default" id="productSearch">
+	      			<span class="glyphicon glyphicon-search"></span> Search
+	    		</button>			
+			</div>
+		</form>
+			
+		<div id="searchResults"></div>
 		
 		<table id="allProducts" class="table">
 		<tr>
@@ -37,9 +47,9 @@
 			</c:forEach>
 		</table>
 		
-		<div class="row footer">
-			<div class="col-xs-4">
-				<h2 class="text-center">Current Deals</h2>
+		<div class="row row-eq-height">
+			<div class="col-xs-4" style="background-color: #F5F5F0;">
+				<h2 class="text-center col-full-height">Current Deals</h2>
 				
 				<ul>
 					<li>Diet Coke $.50</li>
@@ -52,7 +62,7 @@
 				<h2>Coupons</h2>
 			</div>
 			
-			<div class="col-xs-3 text-center">
+			<div class="col-xs-3 text-center" style="background-color: #F5F5F0;">
 				<h2>Contact Us</h2>
 			</div>
 		</div>
@@ -62,6 +72,7 @@
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/eshop9/scripts/application.js"></script>
 
 </body>
 </html>
