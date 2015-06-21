@@ -1,3 +1,11 @@
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: none;
+}
+
 table, td, th {
 	border: 1px solid green;
 }
@@ -40,7 +48,7 @@ label {
 	width: 100px;
 }
 
-.glyphicon {
+.glyphicon-shopping-cart {
 	font-size: 28px;
 	color: green;
 }
